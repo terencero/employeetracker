@@ -27,10 +27,11 @@ $("#addEmployee").on("click", function(){
 	role = $("#roleInput").val().trim();
 	startDate = $("#dateInput").val().trim();
 	rate = $("#rateInput").val().trim();
-	//monthsWorked = (2016 - parseInt(startDate.substr(4,7))) * 12 + (12-parseInt(startDate.substr(2,3)));
+	//use 11 because current month is November.
+	monthsWorked = (2016 - parseInt(startDate.substr(4,7))) * 12 + (11-parseInt(startDate.substr(2,3)));
 	//totalBilled = parseInt(rate) * monthsWorked;
-	var convertedStartDate = moment(new Date(startDate));
-	monthsWorked = moment(convertedStartDate).diff(moment(), "months");
+	//var convertedStartDate = moment(new Date(startDate));
+ 	//monthsWorked = moment(convertedStartDate).diff(moment(), "months");
 	totalBilled = rate * monthsWorked;
 
 	database.ref().push({
@@ -47,6 +48,7 @@ $("#addEmployee").on("click", function(){
 	$("#roleInput").empty();
 	$("#dateInput").empty();
 	$("#rateInput").empty();
+
 	return false;
 });
 
