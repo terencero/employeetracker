@@ -20,8 +20,11 @@ var monthsWorked = 0;
 var totalBilled = 0;
 
 
+$(document).ready(function(){
+	
 $("#addEmployee").on("click", function(){
 	name = $("#nameInput").val().trim();
+	console.log(name);
 	role = $("#roleInput").val().trim();
 	startDate = $("#dateInput").val().trim();
 	rate = $("#rateInput").val().trim();
@@ -76,4 +79,5 @@ database.ref().on("child_added", function(childSnapshot) {
 	console.log("Errors handled: " + errorObject.code);
 });
 
+});
 //database.ref().orderByChild(“dateAdded”).limitToLast(1).on(“child_added”, function(snapshot){});
