@@ -1,3 +1,9 @@
+//Latest compiled and minified CSS & JS
+src="https://code.jquery.com/jquery.js"
+
+//LINK TO FIREBASE GOES HERE
+src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"
+
 var config = {
     apiKey: "AIzaSyCdPSUK2S4pKJaC_bM-I-ZRZH4PClMyv2Y",
     authDomain: "cbay-af8ee.firebaseapp.com",
@@ -16,16 +22,18 @@ var name = "";
 var role = "";
 var startDate = "";
 var rate = 0;
+var monthsWorked = 0;
+var totalBilled = 0;
 
 $("#addEmployee").on("click", function(){
-	var name = $("#nameInput").val().trim();
-	var role = $("#roleInput").val().trim();
-	var startDate = $("#dateInput").val().trim();
-	var rate = $("#rateInput").val().trim();
-	var monthsWorked = (2016 - parseInt(startDate.substr(4,7)) * 12) + (12-parseInt(startDate.substr(2,3)));
-	var totalBilled = parseInt(rate) * monthsWorked;
+	name = $("#nameInput").val().trim();
+	role = $("#roleInput").val().trim();
+	startDate = $("#dateInput").val().trim();
+	rate = $("#rateInput").val().trim();
+	monthsWorked = (2016 - parseInt(startDate.substr(4,7))) * 12 + (12-parseInt(startDate.substr(2,3)));
+	totalBilled = parseInt(rate) * monthsWorked;
 
-	database.ref().set({
+	database.ref().push({
 		employeeName: name,
 		role: role,
 		startDate: startDate,
@@ -40,7 +48,7 @@ $("#addEmployee").on("click", function(){
 database.ref().on("child_added", function(childSnapshot) {
 
 	// Log everything that's coming out of snapshot
-	console.log(chilSnapshot.val());
+	console.log(childSnapshot.val());
 	console.log(childSnapshot.val().employeeName);
 	console.log(childSnapshot.val().role);
 	console.log(childSnapshot.val().startDate);
