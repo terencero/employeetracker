@@ -3,7 +3,7 @@ var config = {
     authDomain: "cbay-af8ee.firebaseapp.com",
     databaseURL: "https://cbay-af8ee.firebaseio.com",
     storageBucket: "cbay-af8ee.appspot.com",
-    messagingSenderId: "352407676079"
+    //messagingSenderId: "352407676079"
   };
   firebase.initializeApp(config);
 
