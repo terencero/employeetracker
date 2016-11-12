@@ -14,7 +14,7 @@ var database = firebase.database();
 //initial values
 var name = "";
 var role = "";
-var startDate "";
+var startDate = "";
 var rate = 0;
 
 $("#addEmployee").on("click", function(){
@@ -22,7 +22,7 @@ $("#addEmployee").on("click", function(){
 	var role = $("#roleInput").val().trim();
 	var startDate = $("#dateInput").val().trim();
 	var rate = $("#rateInput").val().trim();
-	var monthsWorked = (2016 - parseInt(startDate.substr(4,7)) * 12) + (12-parseInt(startDate.substr(2,3));
+	var monthsWorked = (2016 - parseInt(startDate.substr(4,7)) * 12) + (12-parseInt(startDate.substr(2,3)));
 	var totalBilled = parseInt(rate) * monthsWorked;
 
 	database.ref().push({
@@ -73,4 +73,4 @@ database.ref().on("child_added", function(childSnapshot) {
 	console.log("Errors handled: " + errorObject.code);
 });
 
-database.ref().orderByChild(“dateAdded”).limitToLast(1).on(“child_added”, function(snapshot){});
+//database.ref().orderByChild(“dateAdded”).limitToLast(1).on(“child_added”, function(snapshot){});
