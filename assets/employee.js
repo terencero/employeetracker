@@ -3,7 +3,7 @@ var config = {
     authDomain: "cbay-af8ee.firebaseapp.com",
     databaseURL: "https://cbay-af8ee.firebaseio.com",
     storageBucket: "cbay-af8ee.appspot.com",
-    messagingSenderId: "352407676079"
+    //messagingSenderId: "352407676079"
   };
   firebase.initializeApp(config);
 
@@ -16,8 +16,9 @@ var name = "";
 var role = "";
 var startDate = "";
 var rate = 0;
-var totalBilled = 0;
 var monthsWorked = 0;
+var totalBilled = 0;
+
 
 $(document).ready(function(){
 	
@@ -28,6 +29,7 @@ $("#addEmployee").on("click", function(){
 	startDate = $("#dateInput").val().trim();
 	rate = $("#rateInput").val().trim();
 	monthsWorked = (2016 - parseInt(startDate.substr(4,7))) * 12 + (12-parseInt(startDate.substr(2,3)));
+	//totalBilled = parseInt(rate) * monthsWorked;
 	totalBilled = rate * monthsWorked;
 
 	database.ref().push({
