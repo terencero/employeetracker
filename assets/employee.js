@@ -19,8 +19,11 @@ var rate = 0;
 var totalBilled = 0;
 var monthsWorked = 0;
 
+$(document).ready(function(){
+	
 $("#addEmployee").on("click", function(){
 	name = $("#nameInput").val().trim();
+	console.log(name);
 	role = $("#roleInput").val().trim();
 	startDate = $("#dateInput").val().trim();
 	rate = $("#rateInput").val().trim();
@@ -65,7 +68,6 @@ database.ref().on("child_added", function(childSnapshot) {
 	populateEmployeeData(childSnapshot.val().monthsWorked);
 	populateEmployeeData(childSnapshot.val().rate);
 	populateEmployeeData(childSnapshot.val().totalBilled);
-	populateEmployeeData(childSnapshot.val().dateAdded);
 	//newEmployee.html("<th>"+ childSnapshot.val().employeeName + "</th>");
 	$("#dataTable").append(newEmployee);
 
@@ -75,4 +77,5 @@ database.ref().on("child_added", function(childSnapshot) {
 	console.log("Errors handled: " + errorObject.code);
 });
 
+});
 //database.ref().orderByChild(“dateAdded”).limitToLast(1).on(“child_added”, function(snapshot){});
