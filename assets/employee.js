@@ -12,10 +12,10 @@ var config = {
 
 var database = firebase.database();
 
-var name = $("#nameinput").val().trim();
-var role = $("#roleinput").val().trim();
-var startDate = $("#dateinput").val().trim();
-var rate = $("#rateinput").val().trim();
+var name = $("#nameInput").val().trim();
+var role = $("#roleInput").val().trim();
+var startDate = $("#dateInput").val().trim();
+var rate = $("#rateInput").val().trim();
 
 $("#addEmployee").on("click", function(){
 
