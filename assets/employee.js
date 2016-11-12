@@ -18,5 +18,12 @@ var startDate = $("#dateInput").val().trim();
 var rate = $("#rateInput").val().trim();
 
 $("#addEmployee").on("click", function(){
+	database.ref().push({
 
+		name: name,
+		role: role,
+		startDate: startDate,
+		rate: rate
+	});
+	return false;
 });
