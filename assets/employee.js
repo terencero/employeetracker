@@ -67,7 +67,6 @@ database.ref().on("child_added", function(childSnapshot) {
 	populateEmployeeData(childSnapshot.val().monthsWorked);
 	populateEmployeeData(childSnapshot.val().rate);
 	populateEmployeeData(childSnapshot.val().totalBilled);
-	populateEmployeeData(childSnapshot.val().dateAdded);
 	//newEmployee.html("<th>"+ childSnapshot.val().employeeName + "</th>");
 	$("#dataTable").append(newEmployee);
 
