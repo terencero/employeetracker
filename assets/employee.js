@@ -1,9 +1,3 @@
-//Latest compiled and minified CSS & JS
-src="https://code.jquery.com/jquery.js"
-
-//LINK TO FIREBASE GOES HERE
-src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"
-
 var config = {
     apiKey: "AIzaSyCdPSUK2S4pKJaC_bM-I-ZRZH4PClMyv2Y",
     authDomain: "cbay-af8ee.firebaseapp.com",
@@ -25,13 +19,15 @@ var rate = 0;
 var monthsWorked = 0;
 var totalBilled = 0;
 
+
 $("#addEmployee").on("click", function(){
 	name = $("#nameInput").val().trim();
 	role = $("#roleInput").val().trim();
 	startDate = $("#dateInput").val().trim();
 	rate = $("#rateInput").val().trim();
 	monthsWorked = (2016 - parseInt(startDate.substr(4,7))) * 12 + (12-parseInt(startDate.substr(2,3)));
-	totalBilled = parseInt(rate) * monthsWorked;
+	//totalBilled = parseInt(rate) * monthsWorked;
+	totalBilled = rate * monthsWorked;
 
 	database.ref().push({
 		employeeName: name,
