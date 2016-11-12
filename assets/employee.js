@@ -3,7 +3,7 @@ var config = {
     authDomain: "cbay-af8ee.firebaseapp.com",
     databaseURL: "https://cbay-af8ee.firebaseio.com",
     storageBucket: "cbay-af8ee.appspot.com",
-    messagingSenderId: "352407676079"
+    //messagingSenderId: "352407676079"
   };
   firebase.initializeApp(config);
 
@@ -14,26 +14,24 @@ var database = firebase.database();
 //initial values
 var name = "";
 var role = "";
-var startDate "";
+var startDate = "";
 var rate = 0;
+var monthsWorked = 0;
+var totalBilled = 0;
 
+
+$(document).ready(function(){
+	
 $("#addEmployee").on("click", function(){
-<<<<<<< HEAD
+	name = $("#nameInput").val().trim();
+	role = $("#roleInput").val().trim();
+	startDate = $("#dateInput").val().trim();
+	rate = $("#rateInput").val().trim();
+	monthsWorked = (2016 - parseInt(startDate.substr(4,7))) * 12 + (12-parseInt(startDate.substr(2,3)));
+	//totalBilled = parseInt(rate) * monthsWorked;
+	totalBilled = rate * monthsWorked;
+
 	database.ref().push({
-
-		name: name,
-		role: role,
-		startDate: startDate,
-		rate: rate
-=======
-	var name = $("#nameInput").val().trim();
-	var role = $("#roleInput").val().trim();
-	var startDate = $("#dateInput").val().trim();
-	var rate = $("#rateInput").val().trim();
-	var monthsWorked = (2016 - parseInt(startDate.substr(4,7)) * 12) + (12-parseInt(startDate.substr(2,3));
-	var totalBilled = parseInt(rate) * monthsWorked;
-
-	database.ref().set({
 		employeeName: name,
 		role: role,
 		startDate: startDate,
@@ -41,15 +39,20 @@ $("#addEmployee").on("click", function(){
 		rate: rate,
 		totalBilled: totalBilled,
 		dateAdded: firebase.database.ServerValue.TIMESTAMP
->>>>>>> f70cae64ccd6d68cac0ca19ffd7a972d9538a404
 	});
+
+	$("#nameInput").empty();
+	$("#roleInput").empty();
+	$("#dateInput").empty();
+	$("#rateInput").empty();
+
 	return false;
 });
 
 database.ref().on("child_added", function(childSnapshot) {
 
 	// Log everything that's coming out of snapshot
-	console.log(chilSnapshot.val());
+	console.log(childSnapshot.val());
 	console.log(childSnapshot.val().employeeName);
 	console.log(childSnapshot.val().role);
 	console.log(childSnapshot.val().startDate);
@@ -72,7 +75,6 @@ database.ref().on("child_added", function(childSnapshot) {
 	populateEmployeeData(childSnapshot.val().monthsWorked);
 	populateEmployeeData(childSnapshot.val().rate);
 	populateEmployeeData(childSnapshot.val().totalBilled);
-	populateEmployeeData(childSnapshot.val().dateAdded);
 	//newEmployee.html("<th>"+ childSnapshot.val().employeeName + "</th>");
 	$("#dataTable").append(newEmployee);
 
@@ -82,4 +84,5 @@ database.ref().on("child_added", function(childSnapshot) {
 	console.log("Errors handled: " + errorObject.code);
 });
 
-database.ref().orderByChild(“dateAdded”).limitToLast(1).on(“child_added”, function(snapshot){});
+});
+//database.ref().orderByChild(“dateAdded”).limitToLast(1).on(“child_added”, function(snapshot){});
