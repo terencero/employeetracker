@@ -45,7 +45,6 @@ $("#addEmployee").on("click", function(){
 	$("#roleInput").empty();
 	$("#dateInput").empty();
 	$("#rateInput").empty();
-
 	return false;
 });
 
