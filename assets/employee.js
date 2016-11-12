@@ -24,7 +24,6 @@ $(document).ready(function(){
 	
 $("#addEmployee").on("click", function(){
 	name = $("#nameInput").val().trim();
-	console.log(name);
 	role = $("#roleInput").val().trim();
 	startDate = $("#dateInput").val().trim();
 	rate = $("#rateInput").val().trim();
@@ -41,6 +40,12 @@ $("#addEmployee").on("click", function(){
 		totalBilled: totalBilled,
 		dateAdded: firebase.database.ServerValue.TIMESTAMP
 	});
+
+	$("#nameInput").empty();
+	$("#roleInput").empty();
+	$("#dateInput").empty();
+	$("#rateInput").empty();
+
 	return false;
 });
 
